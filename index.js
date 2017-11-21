@@ -1,4 +1,4 @@
 'use strict';
-const mail = require('./resources/mail/units');
+const mail = require('./resources/mail');
 
 module.exports = { resources: { mail } }

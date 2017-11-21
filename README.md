@@ -3,7 +3,7 @@
 [![NPM Version](https://img.shields.io/npm/v/mm-mail.svg?style=flat-square)](https://www.npmjs.com/package/mm-mail)
 [![NPM Downloads](https://img.shields.io/npm/dt/mm-mail.svg?style=flat-square)](https://www.npmjs.com/package/mm-mail)
 
-This extension adds a __mail__ resource. `Mail` resource doesn't provide any API, however, there is an example API in the source. It uses [nodemailer](https://nodemailer.com/about/) to send emails.
+This extension adds a __mail__ resource. `Mail` resource doesn't provide any public APIs. It uses [nodemailer](https://nodemailer.com/about/) to send emails.
 
 ## Usage
 
@@ -17,7 +17,7 @@ This extension adds a __mail__ resource. `Mail` resource doesn't provide any API
 
 ## Controller Methods
 
-#### send(options)
+### send(options)
 
 For available options check [nodemailer message documentation](https://nodemailer.com/message/)
 

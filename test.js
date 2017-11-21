@@ -6,22 +6,14 @@ const createApp = require('mm-test').createApp;
 const extension = require('./index');
 process.env.NODE_ENV = 'production';
 
-let port = 0;
-
 const getMailController = mailSettings => nodemailer
   .createTestAccount()
   .then(account => {
     const app = createApp({
       extensions: [
-        'http',
         'nunjucks',
         extension
       ],
-
-      http: {
-        port: 3000 + port++,
-        host: '0.0.0.0'
-      },
 
       nunjucks: {
         path: './'
