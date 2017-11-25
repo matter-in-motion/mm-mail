@@ -7,7 +7,7 @@ This extension adds a __mail__ resource. `Mail` resource doesn't provide any pub
 
 ## Usage
 
-[Extensions installation intructions](https://github.com/matter-in-motion/mm/blob/master/docs/extensions.md)
+[Extensions installation instructions](https://github.com/matter-in-motion/mm/blob/master/docs/extensions.md)
 
 ## Settings
 
