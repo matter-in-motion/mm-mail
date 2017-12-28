@@ -26,7 +26,10 @@ Controller.prototype.send = function(options) {
     mail.html = this.templates.render(template, data);
 
     if (!mail.subject) {
-      mail.subject = mail.html.match(/<title[^>]*>([^<]+)<\/title>/)[1];
+      const title = mail.html.match(/<title[^>]*>([^<]+)<\/title>/);
+      if (title) {
+        mail.subject = title[1];
+      }
     }
   }
 
