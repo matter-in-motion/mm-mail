@@ -17,23 +17,29 @@ Controller.prototype.__init = function(units) {
 
 Controller.prototype.send = function(options) {
   const mail = Object.assign({}, this.defaults, options);
-  const template = options.template;
+  const template = mail.template;
   delete mail.template;
-  const data = options.data;
+  const data = mail.data;
   delete mail.data;
 
-  if (this.templates && template) {
-    mail.html = this.templates.render(template, data);
+  return new Promise((resolve, reject) => {
+    if (this.templates && template) {
+      let html
+      try {
+        html = this.templates.render(template, data);
+      } catch (e) {
+        return reject(e);
+      }
 
-    if (!mail.subject) {
-      const title = mail.html.match(/<title[^>]*>([^<]+)<\/title>/);
-      if (title) {
-        mail.subject = title[1];
+      mail.html = html;
+      if (!mail.subject) {
+        const title = mail.html.match(/<title[^>]*>([^<]+)<\/title>/);
+        if (title) {
+          mail.subject = title[1];
+        }
       }
     }
-  }
 
-  return new Promise((resolve, reject) => {
     this.transport.sendMail(mail, (error, info) => {
       if (error) {
         this.logger.error({ error }, 'Mail send error')
@@ -43,5 +49,6 @@ Controller.prototype.send = function(options) {
     });
   })
 };
+
 
 module.exports = Controller;
